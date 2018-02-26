@@ -14,6 +14,7 @@ namespace CarInventorySystem.Controllers
 {
     public class CarsInventoryController : Controller
     {
+        #region Genral
         CarsRepository carRepository;
         log4net.ILog logger = log4net.LogManager.GetLogger(typeof(HomeController));
 
@@ -21,6 +22,9 @@ namespace CarInventorySystem.Controllers
         {
             carRepository = new CarsRepository();
         }
+        #endregion
+
+        #region Create Edit Delete 
         // GET: Cars
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
@@ -77,11 +81,10 @@ namespace CarInventorySystem.Controllers
         {
             //Car car = new Car();
             return View();
+            //return PartialView("_Create", car);
         }
 
         // POST: Cars/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Brand,Model,Year,Price,New")] Car car)
@@ -149,5 +152,6 @@ namespace CarInventorySystem.Controllers
             carRepository.DeleteConfirm(id);
             return RedirectToAction("Index");
         }
+        #endregion
     }
 }
