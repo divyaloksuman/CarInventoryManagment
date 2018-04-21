@@ -20,8 +20,12 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Cars", "Index", "CarsInventory")</li>
+                    @if (HttpContext.Current.User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("Cars", "Index", "CarsInventory")</li>
+                    }
+                    
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -37,6 +41,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jquery-ui")
     @RenderSection("scripts", required: false)
 </body>
 </html>

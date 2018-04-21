@@ -197,6 +197,7 @@
     </Compile>
     <Compile Include="Helpers\MyHelpers.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CarsModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -212,6 +213,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\jquery-ui.css" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-ui.min.js" />
     <Content Include="Content\PagedList.css" />
     <Content Include="DAL\CarModel.Context.tt">
@@ -238,7 +240,6 @@
       <DependentUpon>CarModel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.11.1.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
@@ -289,7 +290,7 @@
     <Content Include="Views\CarsInventory\Details.cshtml" />
     <Content Include="Views\CarsInventory\Edit.cshtml" />
     <Content Include="Views\CarsInventory\Index.cshtml" />
-    <Content Include="Views\CarsInventory\_Create.cshtml" />
+    <Content Include="Views\Shared\_Details.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

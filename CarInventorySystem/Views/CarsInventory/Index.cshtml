@@ -1,7 +1,70 @@
 ﻿@model IEnumerable<CarInventorySystem.DAL.Car>
 
-<script src="~/Scripts/jquery-1.11.1.min.js"></script>
-<script src="~/Scripts/jquery-ui.min.js"></script>
+@section scripts
+{
+    @*<script src="~/Scripts/jquery-1.10.2.min.js"></script>*@
+    <script src="~/Scripts/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script>
+        var TeamDetailPostBackURL = '/CarsInventory/Details';
+        var CreateNewPostBackURL = '/CarsInventory/Create';
+        $(function () {
+            $(".anchorDetail").click(function () {
+                //debugger;
+                var $buttonClicked = $(this);
+                var id = $buttonClicked.attr('data-id');
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: TeamDetailPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    data: { "Id": id },
+                    datatype: "json",
+                    success: function (data) {
+                        //debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function (err) {
+                        debugger;
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+            
+            $(".anchorCreateNew").click(function () {
+                //debugger;
+                var options = { "backdrop": "static", keyboard: true };
+                $.ajax({
+                    type: "GET",
+                    url: CreateNewPostBackURL,
+                    contentType: "application/json; charset=utf-8",
+                    datatype: "json",
+                    success: function (data) {
+                        //debugger;
+                        $('#myModalContent').html(data);
+                        $('#myModal').modal(options);
+                        $('#myModal').modal('show');
+
+                    },
+                    error: function (err) {
+                        debugger;
+                        alert("Dynamic content load failed.");
+                    }
+                });
+            });
+
+            $("#closbtn").click(function () {
+                $('#myModal').modal('hide');
+            });
+        });
+
+    </script>
+}
+
 @{
     ViewBag.Title = "Index";
 }
@@ -9,7 +72,8 @@
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")    
+    @*@Html.ActionLink("Create New", "Create")*@
+    <a href="javascript:void(0);" class="anchorCreateNew" data-id="">Create New</a>
 </p>
 
 <table class="table">
@@ -28,7 +92,7 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.New)
-        </th>       
+        </th>
         <th></th>
     </tr>
 
@@ -50,13 +114,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.New)
             </td>
-           
+
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+                <a href="javascript:void(0);" class="anchorDetail" data-id="@item.Id">Details</a>
             </td>
         </tr>
     }
 
 </table>
+<div id='myModal' class='modal'>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id='myModalContent'></div>
+        </div>
+    </div>
+
+</div>   

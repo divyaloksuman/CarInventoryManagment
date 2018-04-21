@@ -117,6 +117,6 @@ D:\proj\GitProj\CarInventorySystem\bin\Microsoft.Owin.Security.OAuth.xml
 D:\proj\GitProj\CarInventorySystem\bin\Microsoft.Owin.Security.Google.xml
 D:\proj\GitProj\CarInventorySystem\bin\Microsoft.Owin.Security.Twitter.xml
 D:\proj\GitProj\CarInventorySystem\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-D:\proj\GitProj\CarInventorySystem\obj\Debug\CarInventorySystem.csprojResolveAssemblyReference.cache
 D:\proj\GitProj\CarInventorySystem\obj\Debug\CarInventorySystem.dll
 D:\proj\GitProj\CarInventorySystem\obj\Debug\CarInventorySystem.pdb
+D:\proj\GitProj\CarInventorySystem\obj\Debug\CarInventorySystem.csprojResolveAssemblyReference.cache

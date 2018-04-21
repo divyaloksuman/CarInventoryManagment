@@ -12,6 +12,7 @@ using CarInventorySystem.Repository.Cars;
 
 namespace CarInventorySystem.Controllers
 {
+    [Authorize]
     public class CarsInventoryController : Controller
     {
         #region Genral
@@ -73,15 +74,21 @@ namespace CarInventorySystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(car);
+            return PartialView("_Details", car);
         }
 
+        //public ActionResult Details(int Id)
+        //{
+        //    FriendsInfo frnds = new FriendsInfo();
+        //    frnds = db.FriendsInfo.Find(Id);
+        //    return PartialView("_Details", frnds);
+        //}   
         // GET: Cars/Create
         public ActionResult Create()
         {
-            //Car car = new Car();
-            return View();
-            //return PartialView("_Create", car);
+            Car car = new Car();
+            //return View();
+            return PartialView("Create", car);
         }
 
         // POST: Cars/Create
